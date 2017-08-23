@@ -28,6 +28,9 @@ export class Navbar extends Component {
           <NavLink to="/test">
             <MenuItem onClick={this.handleClose}>Test</MenuItem>
           </NavLink>
+          <NavLink to="/spotmap">
+            <MenuItem onClick={this.handleClose}>Spot Map</MenuItem>
+          </NavLink>
         </Drawer>
       </div>
     );

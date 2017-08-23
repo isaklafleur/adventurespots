@@ -7,6 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Test from './components/Test';
+import SpotMap from './components/SpotMap';
 import NotFound from './components/NoteFound';
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/test" component={Test} />
+              <Route path="/spotmap" component={SpotMap} />
               <Route component={NotFound} />
             </Switch>
           </div>
