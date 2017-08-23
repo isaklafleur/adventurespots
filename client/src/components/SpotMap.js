@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { GoogleMap, withGoogleMap, Marker } from 'react-google-maps';
-import '../styles/SpotMap.css';
+import React, { Component } from "react";
+import { GoogleMap, withGoogleMap, Marker } from "react-google-maps";
+import "../styles/SpotMap.css";
 
 class SpotMap extends Component {
   constructor(props) {
@@ -10,21 +10,29 @@ class SpotMap extends Component {
         {
           position: {
             lat: 41.4,
-            lng: 1.99,
+            lng: 1.99
           },
-          key: `Taiwan`,
-          defaultAnimation: 2,
+          key: `Spain`,
+          defaultAnimation: 2
         },
-      ],
+        {
+          position: {
+            lat: 42.4,
+            lng: 2.99
+          },
+          key: `Spain2`,
+          defaultAnimation: 2
+        }
+      ]
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleZoom = this.handleZoom.bind(this);
   }
   handleClick(e) {
-    console.log('click ' + JSON.stringify(e, null, 2));
+    console.log("click " + JSON.stringify(e, null, 2));
   }
   handleZoom(e) {
-    console.log('double click ' + JSON.stringify(e, null, 2));
+    console.log("double click " + JSON.stringify(e, null, 2));
   }
 
   render() {
@@ -36,7 +44,7 @@ class SpotMap extends Component {
         onDblClick={this.handleZoom}
       >
         {this.state.markers.map(marker => <Marker {...marker} />)};
-      </GoogleMap>,
+      </GoogleMap>
     );
     return (
       <div>

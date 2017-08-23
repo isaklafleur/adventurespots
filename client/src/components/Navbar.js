@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import AppBar from "material-ui/AppBar";
+import Drawer from "material-ui/Drawer";
+import MenuItem from "material-ui/MenuItem";
 
 export class Navbar extends Component {
   constructor(props) {
@@ -16,7 +16,10 @@ export class Navbar extends Component {
   render() {
     return (
       <div>
-        <AppBar title="Adventure Spots" onLeftIconButtonTouchTap={this.handleToggle} />
+        <AppBar
+          title="Adventure Spots"
+          onLeftIconButtonTouchTap={this.handleToggle}
+        />
         <Drawer
           docked={false}
           open={this.state.open}
@@ -30,6 +33,12 @@ export class Navbar extends Component {
           </NavLink>
           <NavLink to="/spotmap">
             <MenuItem onClick={this.handleClose}>Spot Map</MenuItem>
+          </NavLink>
+          <NavLink to="/signup">
+            <MenuItem onClick={this.handleClose}>SignUp</MenuItem>
+          </NavLink>
+          <NavLink to="/login">
+            <MenuItem onClick={this.handleClose}>Login</MenuItem>
           </NavLink>
         </Drawer>
       </div>
