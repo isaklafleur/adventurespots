@@ -1,0 +1,4 @@
+{
+  "dbUri": "mongodb://localhost/adventurespots",
+  "jwtSecret": "Donald Duck is a very kind Duck!"
+}

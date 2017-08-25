@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
 import SignUpForm from "../presentationals/SignUpForm";
 
 class SignUpPage extends Component {
-  constructor(props) {
-    super(props);
+  /**
+   * Class constructor.
+   */
+  constructor(props, context) {
+    super(props, context);
+
+    // set the initial component state
     this.state = {
       errors: {},
       user: {
@@ -15,21 +22,6 @@ class SignUpPage extends Component {
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
-  }
-
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
-  changeUser(event) {
-    const field = event.target.name;
-    const user = this.state.user;
-    user[field] = event.target.value;
-
-    this.setState({
-      user
-    });
   }
 
   /**
@@ -61,7 +53,11 @@ class SignUpPage extends Component {
           errors: {}
         });
 
-        console.log("The form is valid");
+        // set a message
+        localStorage.setItem("successMessage", xhr.response.message);
+
+        // make a redirect
+        return <Redirect to={"/login"} />;
       } else {
         // failure
 
@@ -74,10 +70,21 @@ class SignUpPage extends Component {
       }
     });
     xhr.send(formData);
+  }
 
-    console.log("name:", this.state.user.name);
-    console.log("email:", this.state.user.email);
-    console.log("password:", this.state.user.password);
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  changeUser(event) {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
+    this.setState({
+      user
+    });
   }
 
   /**
@@ -94,5 +101,9 @@ class SignUpPage extends Component {
     );
   }
 }
+
+SignUpPage.contextTypes = {
+  router: PropTypes.object.isRequired
+};
 
 export default SignUpPage;
