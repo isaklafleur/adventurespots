@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Card, CardTitle, CardText } from "material-ui/Card";
 
 const Dashboard = ({ secretData }) =>
@@ -12,6 +13,8 @@ const Dashboard = ({ secretData }) =>
     {secretData &&
       <CardText style={{ fontSize: "16px", color: "green" }}>
         {secretData}
+        <br />
+        <Link to="/logout">Log out</Link>
       </CardText>}
   </Card>;
 

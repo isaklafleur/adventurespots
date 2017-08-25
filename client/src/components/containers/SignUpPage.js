@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import SignUpForm from "../presentationals/SignUpForm";
 
 class SignUpPage extends Component {
   /**
    * Class constructor.
    */
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     // set the initial component state
     this.state = {
@@ -57,7 +56,7 @@ class SignUpPage extends Component {
         localStorage.setItem("successMessage", xhr.response.message);
 
         // make a redirect
-        return <Redirect to={"/login"} />;
+        this.props.history.push("/login");
       } else {
         // failure
 
@@ -102,8 +101,4 @@ class SignUpPage extends Component {
   }
 }
 
-SignUpPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
-export default SignUpPage;
+export default withRouter(SignUpPage);

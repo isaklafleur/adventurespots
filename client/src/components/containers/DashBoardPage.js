@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Auth from "../../modules/Auth";
 import Dashboard from "../Dashboard";
+import { withRouter } from "react-router-dom";
 
 class DashboardPage extends Component {
   /**
@@ -42,4 +43,4 @@ class DashboardPage extends Component {
   }
 }
 
-export default DashboardPage;
+export default withRouter(DashboardPage);

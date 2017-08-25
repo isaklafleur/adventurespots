@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import Auth from "../../modules/Auth";
-import PropTypes from "prop-types";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import LoginForm from "../presentationals/LoginForm";
 
 class LoginPage extends Component {
   /**
    * Class constructor.
    */
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     const storedMessage = localStorage.getItem("successMessage");
     let successMessage = "";
@@ -65,7 +64,7 @@ class LoginPage extends Component {
         Auth.authenticateUser(xhr.response.token);
 
         // change the current URL to /
-        return <Redirect to={"/"} />;
+        this.props.history.push("/dashboard");
       } else {
         // failure
 
@@ -112,8 +111,4 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
-export default LoginPage;
+export default withRouter(LoginPage);
