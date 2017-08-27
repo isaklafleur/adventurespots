@@ -28,6 +28,7 @@ class SpotMap extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleZoom = this.handleZoom.bind(this);
   }
+
   handleClick(e) {
     console.log("click " + JSON.stringify(e, null, 2));
   }
@@ -36,6 +37,11 @@ class SpotMap extends Component {
   }
 
   render() {
+    const diveIcon = "https://d30y9cdsu7xlg0.cloudfront.net/png/242-200.png";
+    const kitesurfIcon =
+      "http://icons.iconarchive.com/icons/icons8/windows-8/512/Sports-Kitesurfing-icon.png";
+    //  iconUrl = ... (if else choose image)
+    const iconUrl = diveIcon;
     const GettingStartedGoogleMap = withGoogleMap(props =>
       <GoogleMap
         defaultZoom={6}
@@ -43,7 +49,9 @@ class SpotMap extends Component {
         onClick={this.handleClick}
         onDblClick={this.handleZoom}
       >
-        {this.state.markers.map(marker => <Marker {...marker} />)};
+        {this.state.markers.map(marker =>
+          <Marker {...marker} icon={{ url: iconUrl }} />
+        )};
       </GoogleMap>
     );
     return (

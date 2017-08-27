@@ -10,7 +10,7 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 import NavigationClose from "material-ui/svg-icons/navigation/close";
 import Auth from "../modules/Auth";
 
-class Login extends Component {
+class Guest extends Component {
   static muiName = "FlatButton";
 
   render() {
@@ -27,7 +27,7 @@ class Login extends Component {
   }
 }
 
-const Logged = props =>
+const Authenticated = props =>
   <IconMenu
     {...props}
     iconButtonElement={
@@ -64,7 +64,9 @@ export class Navbar extends Component {
         <AppBar
           title="Adventure Spots"
           onLeftIconButtonTouchTap={this.handleToggle}
-          iconElementRight={Auth.isUserAuthenticated() ? <Logged /> : <Login />}
+          iconElementRight={
+            Auth.isUserAuthenticated() ? <Authenticated /> : <Guest />
+          }
         />
         <Drawer
           docked={false}
