@@ -26,7 +26,6 @@ class Guest extends Component {
     );
   }
 }
-
 const Authenticated = props =>
   <IconMenu
     {...props}
