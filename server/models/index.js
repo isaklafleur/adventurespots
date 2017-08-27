@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 module.exports.connect = uri => {
-  mongoose.connect(uri);
+  mongoose.connect(uri, {
+    keepAlive: true,
+    reconnectTries: Number.MAX_VALUE,
+    useMongoClient: true
+  });
   // plug in the promise library:
   mongoose.Promise = global.Promise;
 

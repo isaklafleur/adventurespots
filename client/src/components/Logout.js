@@ -1,0 +1,22 @@
+import React, { Component } from "react";
+import Auth from "../modules/Auth";
+import { withRouter } from "react-router-dom";
+
+class Logout extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+  handleLogout() {
+    Auth.deauthenticateUser();
+    this.props.history.push("/login");
+  }
+  render() {
+    return (
+      <div>
+        {this.handleLogout()}
+      </div>
+    );
+  }
+}
+export default withRouter(Logout);
